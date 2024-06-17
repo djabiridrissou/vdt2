@@ -1,0 +1,534 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poly:ital@0;1&display=swap'); */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  /* font-family: "Cormorant Garamond", serif;
+  font-weight: 700;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0; */
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    overflow-x: hidden;
+}
+
+.chart-container {
+  width: calc(100% / 3); /* Répartit également l'espace pour chaque graphique */
+  max-width: 300px; /* Limite la largeur maximale pour une meilleure expérience utilisateur sur les grands écrans */
+  flex-shrink: 0; /* Empêche le rétrécissement excessif des graphiques sur les petits écrans */
+}
+
+
+.aparai{
+  opacity: 0; /* Commence invisible */
+  animation: fadeInOut 5s ease-in-out infinite; /* Utilise l'animation fadeInOut pour un cycle de 5 secondes, en boucle */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0; /* Début de l'animation : invisible */
+  }
+  50% {
+    opacity: 1; /* Milieu de l'animation : visible */
+  }
+  100% {
+    opacity: 0; /* Fin de l'animation : invisible */
+  }
+}
+@keyframes moveTop {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(50%) scale(0.8);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+@keyframes moveRight {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(50%) scale(0.8);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.animate-arrow {
+  animation: moveTop 2s infinite;
+}
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.parent {
+  position: relative; /* Assurez-vous que le parent a une position définie pour que les éléments positionnés à l'intérieur puissent être positionnés correctement */
+}
+
+.parent::before {
+  content: ""; /* Ajoute un pseudo-élément avant le contenu du parent */
+  position: absolute; /* Positionne l'élément de façon absolue par rapport au parent */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); /* Applique un dégradé gris légèrement transparent sur l'image de fond */
+  z-index: 1; /* Assure que le pseudo-élément est en arrière-plan */
+}
+
+.parent img {
+  position: relative; /* Assurez-vous que l'image a une position relative pour que d'autres éléments puissent être positionnés par-dessus */
+  z-index: 2; /* Assure que l'image est au premier plan */
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+   
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .pagination li {
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 3px 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  
+  .pagination .active {
+    background-color: #a0aec0;
+    color: #fff;
+  }
+  
+
+  .truncate-25 {
+    max-width: 25ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+  
+  .pagination-item {
+    display: inline-block;
+    padding: 0.23em 0.72em;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .pagination-item.active {
+    border-color: #a0aec0; /* Couleur de la bordure pour l'élément actif */
+    background-color: #a0aec0; /* Couleur de l'arrière-plan pour l'élément actif */
+    color: white; /* Couleur du texte pour l'élément actif */
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: inherit;
+    padding: 8px;
+    position: relative;
+  }
+  
+  .active-link {
+    position: relative;
+  }
+  
+  .active-link:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 1.7px;
+    width: 90%;
+    background-color: #d5a638;
+  }
+
+  tr:hover {
+    background-color: #e2e8f0;
+    transform: translateX(-6px);
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .highlight {
+    background-color: yellow;
+  }
+
+  .ant-layout-sider {
+    background-color: black !important;
+  }
+  
+  /* Sidebar menu items */
+.ant-menu {
+  background-color: black;
+}
+
+/* Menu items */
+.ant-menu-item {
+  background-color: black;
+}
+
+/* Submenu items */
+.ant-menu-submenu-title {
+  background-color: black;
+}
+
+/* Hover effect for menu and submenu items */
+.ant-menu-item:hover,
+.ant-menu-submenu-title:hover {
+  background-color: white;
+}
+
+.ant-menu-item-selected {
+  background-color: #a8a680 !important;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(50px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animated-image {
+  animation: move 3s infinite;
+}
+
+.custom-menu .ant-menu-item {
+  background-color: white !important;
+  color: #a8a680 !important; /* Green 800 color */
+}
+
+.custom-menu .ant-menu-item:hover {
+  background-color: #2f855a !important; /* Green 800 color */
+  color: white !important;
+}
+
+.custom-menu .ant-menu-submenu-title {
+  color: #2f855a !important; /* Green 800 color */
+}
+
+.custom-menu .ant-menu-submenu-title:hover {
+  background-color: #a8a680 !important; /* Green 800 color */
+  color: white !important;
+}
+
+.custom-menu .ant-menu-item-selected {
+  background-color: #a8a680 !important; /* Green 800 color */
+  color: white !important;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure navbar is on top of other content */
+}
+ 
+.eledessous {
+  position: relative; /* Assurez-vous que l'élément a une position relative ou absolue */
+  z-index: -1; /* Définit un z-index inférieur à celui de la barre de navigation */
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-content {
+  min-height: 0; /* Réinitialise la hauteur minimale */
+  display: flex;
+  flex-direction: column;
+}
+.animateOnScroll {
+  opacity: 0;
+  transform: translateY(30px); /* Add animation from bottom */
+  animation: slideUp 1s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-down {
+  animation: slideInFromTop 1s ease-out forwards;
+}
+
+.menu-item {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.menu-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.menu-item.selected::after {
+  background-color: #a8a680; /* Couleur verte */
+  transform: scaleX(1);
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 0; /* Remove padding from button itself */
+  overflow: hidden;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #236192;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  z-index: 0;
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button .link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 48px; /* Add padding to the link */
+  z-index: 1; /* Ensure text is above the pseudo-element */
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  background: #a8a680; /* Background color for the button */
+  transition: background 0.5s ease;
+}
+
+.button:hover .link {
+  background: transparent; /* Make background transparent on hover */
+}
+
+/* styles.css */
+
+.navbar {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.navbar.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.custom-sider {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #a8a680; /* Adjust scrollbar thumb color */
+  border-radius: 5px; /* Adjust scrollbar thumb border radius */
+}
+
+
+.cardbg {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.cardbg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #236192;
+  transform: translateY(100%);
+  transition: transform 0.7s ease;
+  z-index: 0;
+  color: white;
+}
+
+.cardbg:hover::before {
+  transform: translateX(0);
+}
+
+@keyframes bubble {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px); /* Ajustez cette valeur selon votre préférence */
+  }
+}
+
+/* Styles pour le quart de cercle */
+.animate-bubble {
+  animation: bubble 1.5s ease-in-out infinite; /* Ajustez la durée et le timing selon vos besoins */
+}
+
+.separator {
+  display: inline-block;
+  width: 70px; /* Ajustez la longueur du trait selon vos besoins */
+  border-top: 1px solid #a8a680; /* Couleur du trait */
+  margin-left: 10px; /* Espace entre les mots et le trait */
+  vertical-align: middle; /* Alignement vertical au centre */
+}
+
+/* Base styles for the image hover effect */
+.image-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-hover::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: white;
+  transform: rotate(45deg);
+  transition: transform 1s ease-in-out;
+}
+
+.image-hover:hover::before {
+  transform: translate(100%, 100%) rotate(45deg);
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background-color: #a8a680;
+  padding: 20px 0;
+}
+
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 50s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
