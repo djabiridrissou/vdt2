@@ -58,7 +58,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="h-[100px] text-sm w-full flex items-center justify-center max-w-6xl bg-[rgb(21,80,79)] mt-12 text-gray-500">
-                Copyright © 2024 by Vandzilah Technology
+                Copyright © 2024 by Djabir IDRISSOU
             </div>
         </div>
     );
